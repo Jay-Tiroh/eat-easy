@@ -27,6 +27,10 @@
   @apply flex flex-col justify-center items-center;
 }
 
+@utility v-flex-h-center {
+  @apply flex flex-col items-center justify-start;
+}
+
 /* :root {
   font-family: var(--font-body);
 } */

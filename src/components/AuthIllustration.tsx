@@ -3,7 +3,7 @@ import React from "react";
 
 const AuthIllustration = () => {
   return (
-    <section className="lg:h-full bg-white flex-vertical-center rounded-3xl gap-6">
+    <section className="lg:h-full bg-white flex-vertical-center rounded-3xl gap-6 lg:shadow-sm">
       <Image
         src={"/assets/images/auth-illustration.svg"}
         alt="auth illustration"

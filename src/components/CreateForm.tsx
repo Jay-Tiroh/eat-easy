@@ -9,18 +9,19 @@ const CreateForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
 
   return (
-    <div className=" gap-9 flex-vertical-center min-h-screen px-5 text-center">
-      <div className="flex-vertical-center gap-4 h-full max-w-[480px]">
-        <h1 className="font-heading font-medium text-[40px] tracking-[-0.5px] leading-12">
-          Getting started! ✌️
-        </h1>{" "}
-        <p className=" text-neutral-600 text-body">
-          Look like you are new to us! Create an account for a complete
-          experience.
-        </p>
-      </div>
-      <div className="flex flex-col items-center gap-20 justify-between! h-full  w-full">
-        <div className="form flex-vertical-center gap-5  w-full">
+    <div className="  gap-9 flex flex-col items-center  h-full px-5 text-center ">
+      <div className="flex-vertical-center py-10 gap-10   w-full h-4/5">
+        <div className="flex-vertical-center gap-4 max-w-[480px]">
+          <h1 className="font-heading font-medium text-[40px] tracking-[-0.5px] leading-12">
+            Getting started! ✌️
+          </h1>{" "}
+          <p className=" text-neutral-600 text-body">
+            Look like you are new to us! Create an account for a complete
+            experience.
+          </p>
+        </div>
+
+        <div className="form flex-vertical-center gap-10  w-full">
           <div className="cta bg-white text-neutral-500  border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
             <input
               type="text"
@@ -77,7 +78,8 @@ const CreateForm = () => {
             )}
           </div>
         </div>
-
+      </div>
+      <div className="flex-vertical-center w-full h-1/5">
         <Link href={"/auth/verify-code"} className="w-full flex justify-center">
           <div className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer">
             Next
