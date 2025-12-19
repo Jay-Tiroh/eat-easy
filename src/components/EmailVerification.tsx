@@ -7,18 +7,18 @@ const EmailVerification = () => {
         <h1 className="font-heading font-medium text-[40px] tracking-[-0.5px] leading-12">
           What’s your email? 📨
         </h1>{" "}
-        <p className=" text-neutral-600 text-body">
+        <p className=" text-neutral-600 dark:text-neutral-150 text-body">
           We need it to search after your account or create a new one.
         </p>
       </div>
       <div className="flex-vertical-center gap-10  w-full">
-        <div className="cta bg-white text-neutral-500 border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
+        <div className="cta bg-white dark:bg-neutral-700 text-neutral-500 dark:text-neutral-200  border-neutral-150 dark:border-neutral-600  border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
           <input
             type="email"
             name="email"
             id="email"
             placeholder="Email"
-            className="outline-none w-full"
+            className="outline-none w-full placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200"
           />
         </div>
 

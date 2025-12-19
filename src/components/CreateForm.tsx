@@ -10,37 +10,37 @@ const CreateForm = () => {
 
   return (
     <div className="  gap-9 flex flex-col items-center  h-full px-5 text-center ">
-      <div className="flex-vertical-center py-10 gap-10   w-full h-4/5">
-        <div className="flex-vertical-center gap-4 max-w-[480px]">
+      <div className="flex-vertical-center justify-start md:justify-center py-10 gap-10   w-full h-4/5">
+        <div className="flex-vertical-center  gap-4 max-w-[480px]">
           <h1 className="font-heading font-medium text-[40px] tracking-[-0.5px] leading-12">
             Getting started! ✌️
           </h1>{" "}
-          <p className=" text-neutral-600 text-body">
+          <p className=" text-neutral-600 dark:text-neutral-150 text-body">
             Look like you are new to us! Create an account for a complete
             experience.
           </p>
         </div>
 
         <div className="form flex-vertical-center gap-10  w-full">
-          <div className="cta bg-white text-neutral-500  border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
+          <div className="cta bg-white dark:bg-neutral-700 text-neutral-500 dark:text-neutral-200  border-neutral-150 dark:border-neutral-600  border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
             <input
               type="text"
               name="username"
               id="username"
               placeholder="Username"
-              className="outline-none w-full placeholder:text-neutral-500"
+              className="outline-none w-full placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 "
             />
           </div>
-          <div className="cta bg-white text-neutral-500  border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
+          <div className="cta bg-white dark:bg-neutral-700 text-neutral-500 dark:text-neutral-200  border-neutral-150 dark:border-neutral-600  border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200">
             <input
               type="email"
               name="email"
               id="email"
               placeholder="Email"
-              className="outline-none w-full placeholder:text-neutral-500"
+              className="outline-none w-full placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 "
             />
           </div>
-          <div className="cta bg-white text-neutral-500  border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 flex gap-3 items-center">
+          <div className="cta bg-white dark:bg-neutral-700 text-neutral-500 dark:text-neutral-200  border-neutral-150 dark:border-neutral-600  border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 flex gap-3 items-center">
             <div className="flex items-center gap-1 px-2 border-r border-r-neutral-500 ">
               Nig
               <IoChevronDown className="size-4" />
@@ -50,16 +50,16 @@ const CreateForm = () => {
               name="phone"
               id="phone"
               placeholder="Phone Number"
-              className="outline-none w-full placeholder:text-neutral-500"
+              className="outline-none w-full placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 "
             />
           </div>
-          <div className="cta bg-white text-neutral-500  border-neutral-150 border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 flex justify-between items-center">
+          <div className="cta bg-white dark:bg-neutral-700 text-neutral-500 dark:text-neutral-200  border-neutral-150 dark:border-neutral-600  border rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 flex justify-between items-center">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               id="password"
               placeholder="Password"
-              className="outline-none w-full placeholder:text-neutral-500"
+              className="outline-none w-full placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 "
             />
             {showPassword ? (
               <LuEye
@@ -79,7 +79,7 @@ const CreateForm = () => {
           </div>
         </div>
       </div>
-      <div className="flex-vertical-center w-full h-1/5">
+      <div className="flex-vertical-center w-full h-1/5 -mt-10">
         <Link href={"/auth/verify-code"} className="w-full flex justify-center">
           <div className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer">
             Next

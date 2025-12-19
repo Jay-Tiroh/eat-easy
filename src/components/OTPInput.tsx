@@ -10,16 +10,23 @@ export default function OtpInput({ length = 4, onChange }: OtpInputProps) {
   const inputsRef = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleInput = (index: number, e: React.FormEvent<HTMLInputElement>) => {
-    const value = (e.target as HTMLInputElement).value;
+    const input = e.target as HTMLInputElement;
 
-    if (!/^\d?$/.test(value)) return; // Only digits allowed
+    // Remove anything that is not a digit
+    input.value = input.value.replace(/[^0-9]/g, "");
 
+    // Allow only one digit
+    const value = input.value.slice(0, 1);
+    input.value = value;
+
+    // Move focus forward
     if (value && index < length - 1) {
       inputsRef.current[index + 1]?.focus();
     }
 
+    // Emit OTP value
     if (onChange) {
-      const otp = inputsRef.current.map((input) => input?.value || "").join("");
+      const otp = inputsRef.current.map((el) => el?.value || "").join("");
       onChange(otp);
     }
   };
@@ -50,7 +57,7 @@ export default function OtpInput({ length = 4, onChange }: OtpInputProps) {
           }}
           onInput={(e) => handleInput(i, e)}
           onKeyDown={(e) => handleKeyDown(i, e)}
-          className="otp-input size-14 text-center text-xl outline-none focus:border-neutral-600 transition bg-white text-neutral-500 border-neutral-150 border-2 rounded-2xl py-4 px-4"
+          className="otp-input size-14 text-center text-xl outline-none focus:border-neutral-600 transition bg-white text-neutral-500 border-neutral-150 border-2 rounded-2xl py-4 px-4 dark:bg-neutral-700 dark:text-neutral-200 dark:border-neutral-600"
         />
       ))}
     </div>

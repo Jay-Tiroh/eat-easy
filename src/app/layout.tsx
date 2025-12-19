@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { DM_Sans, Mulish } from "next/font/google";
 
 import "./globals.css";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { ModeToggle } from "@/components/ModeToggle";
 
 const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
@@ -28,7 +30,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${dmSans.variable} ${mulish.variable} antialiased`}>
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <>
+            <ModeToggle />
+            {children}
+          </>
+        </ThemeProvider>
       </body>
     </html>
   );

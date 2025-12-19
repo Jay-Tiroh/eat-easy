@@ -12,7 +12,7 @@ export default function AuthLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <section className="w-screen h-screen bg-[#f7f7f7] lg:p-5 grid lg:grid-cols-2">
+    <section className="w-screen h-screen bg-bg lg:p-5 grid lg:grid-cols-2 overflow-hidden">
       <section className="">{children}</section>
       <div className=" lg:block hidden">
         <AuthIllustration />

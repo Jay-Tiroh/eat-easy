@@ -3,7 +3,8 @@ import React from "react";
 
 const AuthIllustration = () => {
   return (
-    <section className="lg:h-full bg-white flex-vertical-center rounded-3xl gap-6 lg:shadow-sm">
+    <section className="relative lg:h-full lg:bg-white dark-bg dark:lg:bg-neutral-700 flex-vertical-center overflow-hidden rounded-3xl gap-6 lg:shadow-sm">
+      <div className="overlay h-full absolute top-0  w-full bg-white/5 hidden"></div>
       <Image
         src={"/assets/images/auth-illustration.svg"}
         alt="auth illustration"
@@ -19,10 +20,10 @@ const AuthIllustration = () => {
         className=""
       />
       <div className="text text-center flex flex-col gap-2">
-        <h2 className="text-neutral-550 font-medium text-2xl lg:text-3xl leading-10 tracking-[-0.5px] font-heading">
+        <h2 className="text-neutral-550 dark:text-white font-medium text-2xl lg:text-3xl leading-10 tracking-[-0.5px] font-heading">
           Full contactless experience
         </h2>{" "}
-        <p className="text-neutral-500 text-body">
+        <p className="text-neutral-500 dark:text-neutral-150 text-body">
           From ordering to paying, that’s all contactless
         </p>
       </div>
@@ -31,7 +32,14 @@ const AuthIllustration = () => {
         alt="logo"
         width={300}
         height={300}
-        className="w-26 hidden lg:block"
+        className="w-26 hidden lg:block dark:hidden"
+      />
+      <Image
+        src="/assets/images/logo-dark.svg"
+        alt="logo"
+        width={300}
+        height={300}
+        className="w-26 hidden dark:lg:block"
       />
     </section>
   );
