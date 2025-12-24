@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { DM_Sans, Mulish } from "next/font/google";
-
+import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ModeToggle } from "@/components/ModeToggle";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
@@ -36,9 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <Toaster richColors position="top-right" />
           <>
             <ModeToggle />
-            {children}
+            <AuthProvider>{children}</AuthProvider>
           </>
         </ThemeProvider>
       </body>

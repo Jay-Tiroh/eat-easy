@@ -36,7 +36,7 @@ const OTPForm = () => {
 
       <div className="max-w-[480px] -mt-5 not-last: w-full h-1/4 flex justify-center items-center gap-4 ">
         <Link
-          href="/auth/create"
+          href="/auth/verify-email"
           className="text-primary-purple-2 dark:text-white py-4 px-6 hidden md:flex justify-center items-center gap-2 w-1/3 cursor-pointer hover:underline font-semibold bg-white dark:bg-neutral-700 shadow-sm rounded-2xl hover:scale-101 transition-transform duration-200 "
         >
           <FaArrowLeft className="fill-primary-purple-2 dark:fill-white size-4" />

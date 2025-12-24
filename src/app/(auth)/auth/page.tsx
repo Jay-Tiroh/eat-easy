@@ -16,7 +16,7 @@ const page = () => {
       </div>
       <div className="flex-vertical-center gap-4 w-full">
         <Link
-          href={"/auth/create"}
+          href={"/auth/verify-email"}
           className="w-full max-w-[480px] flex justify-center"
         >
           <div className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer">

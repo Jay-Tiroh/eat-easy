@@ -124,6 +124,66 @@ body {
   @apply font-body;
 }
 
+/* PhoneInput Component Styles */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+.PhoneInput .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding-right: 0.5rem;
+  border-right: 1px solid #8e8ea9;
+}
+
+.dark .PhoneInput .PhoneInputCountry {
+  border-right-color: #666687;
+}
+
+.PhoneInputCountry select {
+  @apply appearance-none w-48 text-sm p-3 rounded-lg bg-bg overflow-hidden! outline-none!;
+}
+.PhoneInputCountry select::after {
+  @apply top-50 bg-white! z-10 block!;
+}
+
+.PhoneInput .PhoneInputCountryIcon {
+  width: 1.25rem;
+  height: 1rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.PhoneInputCountry {
+  @apply max-h-64 overflow-hidden;
+}
+.PhoneInput .PhoneInputCountrySelectArrow {
+  @apply hidden;
+}
+
+.PhoneInput input[type="tel"] {
+  outline: none;
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #8e8ea9;
+}
+
+.dark .PhoneInput input[type="tel"] {
+  color: #dcdce4;
+}
+
+.PhoneInput input[type="tel"]::placeholder {
+  color: #8e8ea9;
+}
+
+.dark .PhoneInput input[type="tel"]::placeholder {
+  color: #dcdce4;
+}
+
 @theme inline {
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
