@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthFlow } from "@/contexts/AuthFlowContext";
 import { checkEmailExists } from "@/lib/checkEmailExists";
@@ -10,8 +10,17 @@ import { toast } from "sonner";
 const EmailVerification = () => {
   const router = useRouter();
   const { setEmail, setUsername, setIsReturningUser } = useAuthFlow();
+
   const [inputEmail, setInputEmail] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const isMounted = useRef(true);
+
+  useEffect(() => {
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
 
   const handleSubmit = async () => {
     if (!inputEmail) {
@@ -22,27 +31,36 @@ const EmailVerification = () => {
     setLoading(true);
 
     try {
-      const exists = await checkEmailExists(inputEmail); // returns boolean
+      const exists = await checkEmailExists(inputEmail);
+      if (!isMounted.current) return;
 
       setEmail(inputEmail);
       setIsReturningUser(exists);
-      console.log("Email exists:", exists);
+
       if (exists) {
         const username = await fetchUsernameByEmail(inputEmail);
+        if (!isMounted.current) return;
+
         setUsername(username);
         router.push("/auth/sign-in");
       } else {
         router.push("/auth/create");
       }
     } catch (error: any) {
-      toast.error(error.message || "Failed to check email.");
+      if (isMounted.current) {
+        toast.error(error.message || "Failed to check email.");
+      }
     } finally {
-      setLoading(false);
+      if (isMounted.current) {
+        setLoading(false);
+      }
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleSubmit();
+    if (e.key === "Enter" && !loading) {
+      handleSubmit();
+    }
   };
 
   return (

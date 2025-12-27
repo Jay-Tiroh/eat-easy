@@ -18,30 +18,34 @@ const SignInForm = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const [password, setPassword] = React.useState("");
 
-  // Persist and rehydrate email/username so the correct credentials display even after refresh/navigation.
-  const [displayEmail, setDisplayEmail] = React.useState(email);
-  const [displayUsername, setDisplayUsername] = React.useState(username);
+  const [displayEmail, setDisplayEmail] = React.useState<string>("");
+  const [displayUsername, setDisplayUsername] = React.useState<string>("");
 
   React.useEffect(() => {
-    // Save current values for later visits to this screen.
-    if (email) sessionStorage.setItem("authFlowEmail", email);
-    if (username) sessionStorage.setItem("authFlowUsername", username);
-    setDisplayEmail(email);
-    setDisplayUsername(username);
-  }, [email, username]);
+    const storedEmail = sessionStorage.getItem("authFlowEmail");
+    const storedUsername = sessionStorage.getItem("authFlowUsername");
 
-  React.useEffect(() => {
-    // Rehydrate from storage if context is empty (e.g., after a page refresh).
-    if (!email || !username) {
-      const storedEmail = sessionStorage.getItem("authFlowEmail") || "";
-      const storedUsername = sessionStorage.getItem("authFlowUsername") || "";
-      if (!email && storedEmail) setEmail(storedEmail);
-      if (!username && storedUsername) setUsername(storedUsername);
-      if (!displayEmail && storedEmail) setDisplayEmail(storedEmail);
-      if (!displayUsername && storedUsername)
-        setDisplayUsername(storedUsername);
+    if (!email && storedEmail) {
+      setEmail(storedEmail);
+      setDisplayEmail(storedEmail);
     }
-  }, [email, username, displayEmail, displayUsername, setEmail, setUsername]);
+
+    if (!username && storedUsername) {
+      setUsername(storedUsername);
+      setDisplayUsername(storedUsername);
+    }
+  }, []);
+  React.useEffect(() => {
+    if (email) {
+      sessionStorage.setItem("authFlowEmail", email);
+      setDisplayEmail(email);
+    }
+
+    if (username) {
+      sessionStorage.setItem("authFlowUsername", username);
+      setDisplayUsername(username);
+    }
+  }, [email, username]);
 
   const handleSignIn = async () => {
     const emailToUse = displayEmail || email;
@@ -64,13 +68,7 @@ const SignInForm = () => {
         return;
       }
 
-      // Optional: check email verification
-      // if (!result.user.emailVerified) {
-      //   toast("Please verify your email first.");
-      //   return;
-      // }
-
-      router.push("/splash");
+      router.push("/locations");
     } catch (error: any) {
       if (error.code === "auth/wrong-password") {
         toast.error("Incorrect password.");
