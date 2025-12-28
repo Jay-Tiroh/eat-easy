@@ -1,4 +1,5 @@
 import MobileNav from "@/components/MobileNav";
+import NavBar from "@/components/NavBar";
 import { Sidebar } from "@/components/Sidebar";
 import { AuthProvider } from "@/contexts/AuthContext";
 
@@ -17,13 +18,14 @@ export default function DashLayout({
   return (
     <AuthFlowProvider>
       <SidebarProvider>
-        <section className="w-screen h-screen bg-bg flex gap-10 overflow-hidden">
+        <section className="w-screen h-screen dark:bg-bg bg-neutral-120 flex  overflow-hidden">
           <AuthProvider>
             <Sidebar />
           </AuthProvider>
 
           <section className="w-full flex flex-col">
             <MobileNav />
+            <NavBar />
             {children}
           </section>
         </section>

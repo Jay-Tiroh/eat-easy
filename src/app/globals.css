@@ -86,6 +86,7 @@
 @theme inline {
   --color-neutral-0: #fff;
   --color-neutral-100: #f6f6f9;
+  --color-neutral-120: #f7f7f7;
   --color-neutral-150: #eaeaef;
   --color-neutral-200: #dcdce4;
   --color-neutral-400: #a5a5ba;
@@ -96,6 +97,7 @@
   --color-neutral-800: #32324d;
   --color-neutral-900: #212134;
   --color-alt-neutral: #8c85b0;
+  --color-alt-grey: #c0c0cf;
 
   --color-primary-purple-2: #615793;
   --color-primary-purple-3: #8981ae;
@@ -103,6 +105,7 @@
   --color-yellow-500: #fbbc05;
   --color-yellow-0: #faa300;
   --color-yellow-1: #fbbc05;
+  --color-sec-yellow-1: #ffb01d;
   --color-red-500: #ea4335;
   --color-blue-500: #1877f2;
   --color-blue-400: #4285f4;
@@ -116,9 +119,15 @@
 @utility text-body {
   @apply font-medium leading-7;
 }
+@utility text-heading2 {
+  @apply font-heading text-lg leading-5.5;
+}
 
 @utility flex-vertical-center {
   @apply flex flex-col justify-center items-center;
+}
+@utility flex-horizontal-center {
+  @apply flex justify-center items-center;
 }
 
 @utility v-flex-h-center {
@@ -237,4 +246,20 @@ body {
 
 .dashboard-sidebar {
   scrollbar-width: none;
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.map-wrap {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Adjust height as needed (e.g., 500px or calc(100vh - 80px)) */
+}
+
+.map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }

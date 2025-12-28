@@ -13,12 +13,12 @@ const MobileNav = () => {
   };
   return (
     <div
-      className={`w-full justify-end py-5 px-10 items-center ${
+      className={`w-full justify-end py-2.5 px-10 items-center ${
         isMobile ? "flex" : "hidden"
       }`}
     >
       <RiMenu2Fill
-        className="size-6 text-neutral-700 dark:text-white cursor-pointer"
+        className="size-6 text-neutral-700 dark:text-primary-purple-5 cursor-pointer"
         onClick={handleToggle}
       />
     </div>

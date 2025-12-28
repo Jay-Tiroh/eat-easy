@@ -1,7 +1,17 @@
+"use client";
+import DesktopLocation from "@/components/DesktopLocation";
+import MobileLocation from "@/components/MobileLocation";
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 
 const page = () => {
-  return <div>page</div>;
+  const isMobile = useMediaQuery({ maxWidth: 800 });
+
+  return (
+    <div className="h-full">
+      {isMobile ? <MobileLocation /> : <DesktopLocation />}
+    </div>
+  );
 };
 
 export default page;
