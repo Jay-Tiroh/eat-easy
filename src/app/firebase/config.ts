@@ -16,6 +16,9 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const auth = getAuth(app);
+const db = getFirestore(app);
 
-export { app, auth };
-export const db = getFirestore(app);
+// Ensure persistence is disabled for client-side usage
+auth.setPersistence = auth.setPersistence || (() => Promise.resolve());
+
+export { app, auth, db };

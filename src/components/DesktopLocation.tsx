@@ -150,7 +150,7 @@ const Page3 = () => {
   ];
 
   return (
-    <div className="flex-vertical-center  h-full py-10 gap-15">
+    <div className="flex-vertical-center  h-full py-10 gap-15 overflow-auto scroll-none">
       <div className="gap-15 flex-vertical-center  text-center justify-start">
         <div className="flex-vertical-center gap-4">
           <h1 className="font-heading font-medium text-neutral-800 dark:text-white leading-12.5 -tracking-[0.5px] text-center text-[40px] max-w-[634px]">

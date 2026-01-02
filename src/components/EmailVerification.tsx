@@ -32,26 +32,41 @@ const EmailVerification = () => {
 
     try {
       const exists = await checkEmailExists(inputEmail);
-      if (!isMounted.current) return;
+      if (!isMounted.current) {
+        setLoading(false);
+        return;
+      }
 
       setEmail(inputEmail);
       setIsReturningUser(exists);
 
       if (exists) {
-        const username = await fetchUsernameByEmail(inputEmail);
-        if (!isMounted.current) return;
-
-        setUsername(username);
-        router.push("/auth/sign-in");
+        try {
+          const username = await fetchUsernameByEmail(inputEmail);
+          if (!isMounted.current) {
+            setLoading(false);
+            return;
+          }
+          setUsername(username);
+        } catch (err) {
+          console.warn("Failed to fetch username, proceeding anyway", err);
+          // Continue even if username fetch fails
+        }
+        // Add a small delay to ensure state updates complete before navigation
+        setTimeout(() => {
+          router.push("/auth/sign-in");
+        }, 100);
       } else {
-        router.push("/auth/create");
+        // Add a small delay to ensure state updates complete before navigation
+        setTimeout(() => {
+          router.push("/auth/create");
+        }, 100);
       }
     } catch (error: any) {
       if (isMounted.current) {
-        toast.error(error.message || "Failed to check email.");
-      }
-    } finally {
-      if (isMounted.current) {
+        const errorMessage =
+          error?.message || "Failed to check email. Please try again.";
+        toast.error(errorMessage);
         setLoading(false);
       }
     }

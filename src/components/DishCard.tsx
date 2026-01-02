@@ -42,10 +42,10 @@ export function DishCard({ dish, viewMode }: DishCardProps) {
 
 const ListCard = ({ dish }: DishCardProps) => {
   return (
-    <div className="flex items-center p-4 bg-white rounded-2xl shadow-sm card-shadow hover:shadow-md transition-shadow duration-300 w-full max-w-md h-33">
+    <div className="flex items-center p-4 bg-white dark:bg-neutral-700 rounded-2xl shadow-sm card-shadow hover:shadow-md transition-shadow duration-300 w-full sm:max-w-md max-w-11/12 mx-auto  h-33">
       {/* Image Container */}
       <div className="relative w-25 h-25 shrink-0 mr-4">
-        <div className="w-full h-full rounded-full overflow-hidden border-2 border-gray-50">
+        <div className="w-full h-full rounded-full overflow-hidden border-2 border-neutral-50 dark:border-neutral-500">
           <Image
             // Placeholder image if none provided
             src={`/assets/images/${dish.img}.png`}
@@ -61,16 +61,16 @@ const ListCard = ({ dish }: DishCardProps) => {
       <div className="flex-1 min-w-0 h-full">
         <div className="flex flex-col gap-5 h-full">
           <div className="flex flex-col">
-            <h3 className="text-neutral-800 text-subtitle1 truncate">
+            <h3 className="text-neutral-800 dark:text-white text-subtitle1 truncate">
               {dish.name}
             </h3>
             {/* Rating Row */}
             <div className="flex items-center gap-1">
               <Star className="w-4 h-4 text-yellow-1 fill-current" />
-              <span className=" text-sm font-semibold leading-5 text-neutral-500">
+              <span className=" text-sm font-semibold leading-5 text-neutral-500 dark:text-neutral-200">
                 {dish.review.rating}
               </span>
-              <span className=" text-sm font-semibold leading-5  text-neutral-300">
+              <span className=" text-sm font-semibold leading-5  text-neutral-300 dark:text-neutral-500 ">
                 ({dish.review.number_of_reviews} reviews)
               </span>
             </div>
@@ -89,10 +89,10 @@ const ListCard = ({ dish }: DishCardProps) => {
 
       {/* Action Button */}
       <button
-        className="ml-4 shrink-0 w-10 h-10 flex items-center justify-center bg-orange-5 rounded-xl hover:bg-orange-100 active:bg-orange-200 transition-colors group cursor-pointer"
+        className="ml-4 shrink-0 w-10 h-10 flex items-center justify-center bg-orange-5 rounded-xl hover:bg-orange-100 active:bg-orange-200 transition-colors group cursor-pointer dark:bg-orange-1  dark:hover:bg-orange-1 dark:active:bg-orange-500"
         aria-label="Add to cart"
       >
-        <Plus className="w-6 h-6 text-orange-1 group-hover:scale-110 transition-transform" />
+        <Plus className="w-6 h-6 text-orange-1 dark:text-white group-hover:scale-110 transition-transform" />
       </button>
     </div>
   );
@@ -100,7 +100,7 @@ const ListCard = ({ dish }: DishCardProps) => {
 
 const GridCard = ({ dish }: DishCardProps) => {
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl shadow-sm card-shadow hover:shadow-md transition-shadow duration-300 w-full max-w-76">
+    <div className="flex flex-col items-center justify-center p-6 bg-white dark:bg-neutral-700 rounded-2xl shadow-sm card-shadow hover:shadow-md transition-shadow duration-300 w-full max-w-76">
       {/* Image Container with Floating Rating */}
       <div className="relative w-32 h-32 mb-6 shrink-0">
         {/* Main Image */}
@@ -126,7 +126,7 @@ const GridCard = ({ dish }: DishCardProps) => {
       {/* Content Container */}
       <div className="flex flex-col items-center gap-2 w-full">
         {/* Title */}
-        <h3 className="text-neutral-800 text-lg font-bold text-center truncate w-full px-2">
+        <h3 className="text-neutral-800 dark:text-white text-lg font-bold text-center truncate w-full px-2 ">
           {dish.name}
         </h3>
 
@@ -142,10 +142,10 @@ const GridCard = ({ dish }: DishCardProps) => {
           </div>
           {/* Action Button */}
           <button
-            className="ml-4 shrink-0 w-10 h-10 flex items-center justify-center bg-orange-5 rounded-xl hover:bg-orange-100 active:bg-orange-200 transition-colors group cursor-pointer"
+            className="ml-4 shrink-0 w-10 h-10 flex items-center justify-center bg-orange-5 rounded-xl hover:bg-orange-100 active:bg-orange-200 dark:bg-orange-1 dark:hover:bg-orange-1 dark:active:bg-orange-500 transition-colors group cursor-pointer"
             aria-label="Add to cart"
           >
-            <Plus className="size-5 text-orange-1 group-hover:scale-110 transition-transform" />
+            <Plus className="size-5 text-orange-1 dark:text-white group-hover:scale-110 transition-transform" />
           </button>
         </div>
       </div>

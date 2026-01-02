@@ -170,9 +170,12 @@ const Page3 = () => {
         </RadioGroup>
       </div>
       <div className="w-full flex justify-center">
-        <div className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[327px] lg:max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer text-center">
+        <Link
+          href={"/menu"}
+          className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[327px] lg:max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer text-center"
+        >
           Continue
-        </div>
+        </Link>
       </div>{" "}
     </div>
   );
