@@ -5,7 +5,7 @@ import { RiMenu2Fill } from "react-icons/ri";
 import { useMediaQuery } from "react-responsive";
 
 const MobileNav = () => {
-  const isMobile = useMediaQuery({ maxWidth: 800 });
+  const isMobile = useMediaQuery({ maxWidth: 1032 });
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   const handleToggle = () => {

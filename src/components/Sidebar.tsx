@@ -73,7 +73,7 @@ export function Sidebar() {
     }
   };
 
-  const isMobile = useMediaQuery({ maxWidth: 800 });
+  const isMobile = useMediaQuery({ maxWidth: 1032 });
   return isMobile ? (
     <MobileSidebar
       sidebarOpen={sidebarOpen}

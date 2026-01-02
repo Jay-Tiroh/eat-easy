@@ -121,7 +121,11 @@ const MenuNav = () => {
           </div>
         </CollapsibleTrigger>
 
-        <CollapsibleContent className="border-l-2 border-yellow-0 ml-5.5 pl-5.5 mt-4">
+        <CollapsibleContent
+          className={`border-l-2 border-yellow-0 ml-5.5 pl-5.5 mt-4 ${
+            sidebarOpen ? "" : "hidden"
+          }`}
+        >
           <div className="flex-vertical-center gap-4">
             {collapsibleMenu.children.map((item) => {
               const active = isActive(item.link);

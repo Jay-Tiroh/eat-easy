@@ -102,6 +102,9 @@
   --color-primary-purple-2: #615793;
   --color-primary-purple-3: #8981ae;
   --color-primary-purple-5: #ebeaf2;
+  --color-orange-1: #ff7b2c;
+  --color-orange-3: #ffb080;
+  --color-orange-5: #fff2ea;
   --color-yellow-500: #fbbc05;
   --color-yellow-0: #faa300;
   --color-yellow-1: #fbbc05;
@@ -119,8 +122,20 @@
 @utility text-body {
   @apply font-medium leading-7;
 }
+@utility text-subtitle1 {
+  @apply font-semibold leading-7 text-lg;
+}
+@utility text-heading1 {
+  @apply font-heading font-medium text-[26px] leading-9 tracking-[-0.5px];
+}
 @utility text-heading2 {
   @apply font-heading text-lg leading-5.5;
+}
+@utility text-heading3 {
+  @apply text-[22px] leading-7.5 font-bold;
+}
+@utility text-heading4 {
+  @apply text-[18px] leading-5.5 font-semibold;
 }
 
 @utility flex-vertical-center {
@@ -245,6 +260,10 @@ body {
   ); */
 
 .dashboard-sidebar {
+  scrollbar-width: none;
+}
+
+.scroll-none {
   scrollbar-width: none;
 }
 

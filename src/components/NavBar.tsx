@@ -5,7 +5,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { useMediaQuery } from "react-responsive";
 
 const NavBar = () => {
-  const isMobile = useMediaQuery({ maxWidth: 800 });
+  const isMobile = useMediaQuery({ maxWidth: 1032 });
   if (isMobile) return null;
   return (
     <div className="flex items-center w-full h-20 py-5 px-7.5 justify-between border-b border-neutral-150 dark:border-neutral-700 ">
