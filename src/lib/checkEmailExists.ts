@@ -62,7 +62,7 @@ export async function checkEmailExists(email: string): Promise<boolean> {
     for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
       try {
         // Primary check via Firebase Auth sign-in methods with timeout
-        let methods;
+        let methods: string[] = [];
         try {
           methods = await withTimeout(
             fetchSignInMethodsForEmail(auth, normalizedEmail),
