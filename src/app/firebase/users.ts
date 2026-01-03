@@ -1,3 +1,4 @@
+"use client";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "./config";
 
