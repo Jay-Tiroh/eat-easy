@@ -11,7 +11,6 @@ import { LuHistory, LuMapPin } from "react-icons/lu";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useSidebar } from "@/contexts/SidebarContext";
-import { link } from "fs";
 
 type NavItem = {
   name: string;

@@ -1,6 +1,5 @@
 import AuthIllustration from "@/components/AuthIllustration";
 import { AuthFlowProvider } from "@/contexts/AuthFlowContext";
-import Image from "next/image";
 import { Suspense } from "react";
 import loading from "../loading";
 export const metadata = {

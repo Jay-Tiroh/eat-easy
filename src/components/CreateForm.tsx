@@ -2,7 +2,7 @@
 
 import React from "react";
 import { LuEyeOff, LuEye } from "react-icons/lu";
-import Link from "next/link";
+
 import { useRouter } from "next/navigation";
 
 import { toast } from "sonner";
