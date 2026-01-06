@@ -2,13 +2,10 @@
 import { ChevronDown, MapPin } from "lucide-react";
 import React from "react";
 import { FiShoppingCart } from "react-icons/fi";
-import { useMediaQuery } from "react-responsive";
 
 const NavBar = () => {
-  const isMobile = useMediaQuery({ maxWidth: 1032 });
-  if (isMobile) return null;
   return (
-    <div className="flex items-center w-full h-20 py-5 px-7.5 justify-between border-b border-neutral-150 dark:border-neutral-700 ">
+    <div className=" hidden lg:flex items-center w-full h-20 py-5 px-7.5 justify-between border-b border-neutral-150 dark:border-neutral-700 ">
       <div className="page flex-vertical-center">
         <span className="font-semibold text-sm leading-5 text-neutral-500 dark:text-neutral-200 text-start w-full">
           Food Menu

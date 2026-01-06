@@ -5,11 +5,11 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 
 const page = () => {
-  const isMobile = useMediaQuery({ maxWidth: 1032 });
+  const isMobile = useMediaQuery({ maxWidth: 800 });
 
   return (
     <div className="h-full">
-      {isMobile ? <MobileLocation /> : <DesktopLocation />}
+      <MobileLocation /> <DesktopLocation />
     </div>
   );
 };

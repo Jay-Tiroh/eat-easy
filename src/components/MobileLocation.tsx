@@ -1,10 +1,10 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-
+import { Skeleton } from "@/components/ui/skeleton";
 const locationCards = [
   {
     image: "qrcode",
@@ -41,7 +41,7 @@ export default function MobileLocation() {
     }
   }
 
-  return <div className="w-full mt-3 h-full">{renderPage()}</div>;
+  return <div className="w-full mt-3 h-full lg:hidden">{renderPage()}</div>;
 }
 
 const Page1 = ({ handleNext }: { handleNext: () => void }) => {
@@ -53,35 +53,41 @@ const Page1 = ({ handleNext }: { handleNext: () => void }) => {
 
       <div className="flex-vertical-center w-full gap-6">
         {locationCards.map((card) => (
-          <div
-            key={card.title}
-            className="card-shadow flex-vertical-center bg-white dark:bg-neutral-700 shadow-lg  rounded-2xl p-20 max-w-[400px] h-[212px] gap-5 cursor-pointer"
-            onClick={handleNext}
+          <Suspense
+            fallback={
+              <Skeleton className="w-[400px] h-[212px]  rounded-lg bg-neutral-500" />
+            }
           >
-            <Image
-              src={`/assets/images/${card.image}.svg`}
-              width={100}
-              height={100}
-              alt={card.title}
-              className={`size-17.5 ${card.dark ? "dark:hidden" : ""}`}
-            />
-            {card.dark && (
+            <div
+              key={card.title}
+              className="card-shadow flex-vertical-center bg-white dark:bg-neutral-700 shadow-lg  rounded-2xl p-20 max-w-[400px] h-[212px] gap-5 cursor-pointer"
+              onClick={handleNext}
+            >
               <Image
-                src={`/assets/images/${card.dark}.svg`}
+                src={`/assets/images/${card.image}.svg`}
                 width={100}
                 height={100}
                 alt={card.title}
-                className="size-17.5 hidden dark:block"
+                className={`size-17.5 ${card.dark ? "dark:hidden" : ""}`}
               />
-            )}
+              {card.dark && (
+                <Image
+                  src={`/assets/images/${card.dark}.svg`}
+                  width={100}
+                  height={100}
+                  alt={card.title}
+                  className="size-17.5 hidden dark:block"
+                />
+              )}
 
-            <h2 className="text-neutral-900 dark:text-white leading-5.5 font-semibold text-center w-full">
-              {card.title}
-            </h2>
-            <p className="text-neutral-600  dark:text-neutral-300 text-sm leading-6 font-medium  text-center">
-              {card.description}
-            </p>
-          </div>
+              <h2 className="text-neutral-900 dark:text-white leading-5.5 font-semibold text-center w-full">
+                {card.title}
+              </h2>
+              <p className="text-neutral-600  dark:text-neutral-300 text-sm leading-6 font-medium  text-center">
+                {card.description}
+              </p>
+            </div>
+          </Suspense>
         ))}
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function AuthLayout({
   return (
     <Suspense fallback={loading()}>
       <AuthFlowProvider>
-        <section className="w-screen h-screen bg-bg lg:p-5 grid lg:grid-cols-2 overflow-hidden">
+        <section className="w-svw h-svh bg-bg lg:p-5 grid lg:grid-cols-2 overflow-hidden">
           <section className="">{children}</section>
           <div className=" lg:block hidden">
             <AuthIllustration />

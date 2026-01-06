@@ -26,7 +26,7 @@ export default function DesktopLocation() {
         return <Page1 handleNext={handleNext} />;
     }
   }
-  return <div className="w-full h-full">{renderPage()}</div>;
+  return <div className="w-full h-full hidden lg:block">{renderPage()}</div>;
 }
 
 const Page1 = ({ handleNext }: { handleNext: () => void }) => {

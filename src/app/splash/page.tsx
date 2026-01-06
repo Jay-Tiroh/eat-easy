@@ -44,7 +44,7 @@ export default function SplashPage() {
           alt="logo"
           width={300}
           height={300}
-          className="w-30 my-10 dark:sm:hidden dark:block"
+          className="w-30 my-10 hidden dark:sm:hidden dark:block"
         />
         <p className=" dark:text-neutral-100   leading-8 text-lg font-medium hidden sm:block max-w-120 md:max-w-full">
           Are you tired of scrolling through menus and struggling to decide{" "}

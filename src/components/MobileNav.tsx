@@ -2,10 +2,8 @@
 
 import { useSidebar } from "@/contexts/SidebarContext";
 import { RiMenu2Fill } from "react-icons/ri";
-import { useMediaQuery } from "react-responsive";
 
 const MobileNav = () => {
-  const isMobile = useMediaQuery({ maxWidth: 1032 });
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   const handleToggle = () => {
@@ -13,9 +11,7 @@ const MobileNav = () => {
   };
   return (
     <div
-      className={`w-full justify-end py-2.5 px-10 items-center ${
-        isMobile ? "flex" : "hidden"
-      }`}
+      className={`w-full justify-end py-2.5 px-10 items-center lg:hidden flex`}
     >
       <RiMenu2Fill
         className="size-6 text-neutral-700 dark:text-primary-purple-5 cursor-pointer"

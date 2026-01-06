@@ -13,7 +13,6 @@ import { auth } from "@/app/firebase/config";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useSidebar } from "@/contexts/SidebarContext";
-import { useMediaQuery } from "react-responsive";
 
 export function Sidebar() {
   const username = useAuthFlow().username;
@@ -73,23 +72,24 @@ export function Sidebar() {
     }
   };
 
-  const isMobile = useMediaQuery({ maxWidth: 1032 });
-  return isMobile ? (
-    <MobileSidebar
-      sidebarOpen={sidebarOpen}
-      setSidebarOpen={setSidebarOpen}
-      displayName={displayName}
-      handleLogout={handleLogout}
-      sidebarRef={sidebarRef}
-    />
-  ) : (
-    <DesktopSidebar
-      sidebarOpen={sidebarOpen}
-      setSidebarOpen={setSidebarOpen}
-      displayName={displayName}
-      handleLogout={handleLogout}
-      sidebarRef={sidebarRef}
-    />
+  return (
+    <>
+      <MobileSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        displayName={displayName}
+        handleLogout={handleLogout}
+        sidebarRef={sidebarRef}
+      />
+
+      <DesktopSidebar
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+        displayName={displayName}
+        handleLogout={handleLogout}
+        sidebarRef={sidebarRef}
+      />
+    </>
   );
 }
 
@@ -107,7 +107,7 @@ const DesktopSidebar = ({
   sidebarRef: React.RefObject<HTMLDivElement | null>;
 }) => {
   return (
-    <div className=" relative">
+    <div className=" relative hidden lg:block">
       {/* toggle btn */}
       <div className="flex items-center justify-center absolute rounded-full p-1 -right-4 top-25  bg-neutral-800! dark:bg-neutral-900! border border-alt-neutral/50 z-99 cursor-pointer">
         <ChevronRight
@@ -216,7 +216,7 @@ const MobileSidebar = ({
   sidebarRef: React.RefObject<HTMLDivElement | null>;
 }) => {
   return (
-    <div className=" absolute h-screen top-0 left-0 z-50 flex">
+    <div className=" absolute h-screen top-0 left-0 z-50 lg:hidden flex">
       <div
         className={`overlay bg-black/50 absolute inset-0 w-screen h-screen ${
           sidebarOpen ? "block" : "hidden"

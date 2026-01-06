@@ -117,6 +117,8 @@
   --font-body: var(--font-mulish);
 
   --color-bg: var(--bg);
+
+  --screens-mid: 1032px;
 }
 
 @utility text-body {
