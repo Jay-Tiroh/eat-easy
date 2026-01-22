@@ -3,8 +3,6 @@ import { MapPin, Search } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import Map from "./Map";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import Link from "next/link";
 export default function DesktopLocation() {
   const [page, setPage] = React.useState(1);
@@ -19,9 +17,8 @@ export default function DesktopLocation() {
       case 1:
         return <Page1 handleNext={handleNext} />;
       case 2:
-        return <Page2 handleNext={handleNext} />;
-      case 3:
-        return <Page3 />;
+        return <Page2 />;
+
       default:
         return <Page1 handleNext={handleNext} />;
     }
@@ -94,7 +91,7 @@ const Page1 = ({ handleNext }: { handleNext: () => void }) => {
   );
 };
 
-const Page2 = ({ handleNext }: { handleNext: () => void }) => {
+const Page2 = () => {
   return (
     <div className="w-full h-full relative">
       <Map />
@@ -111,99 +108,22 @@ const Page2 = ({ handleNext }: { handleNext: () => void }) => {
             className="w-full outline-none text-neutral-500 placeholder:text-neutral-500 dark:text-neutral-200 dark:placeholder:text-neutral-200 font-semibold leading-4.5"
             placeholder="Search for streets, cities, districts..."
           />
-          <Search
-            className="size-5 text-alt-grey dark:text-neutral-300 hover:text-neutral-400 cursor-pointer transition-colors duration-150"
-            onClick={handleNext}
-          />
+          <Link href="/locations/select">
+            <Search className="size-5 text-alt-grey dark:text-neutral-300 hover:text-neutral-400 cursor-pointer transition-colors duration-150" />
+          </Link>
         </div>
 
         <div className="flex-horizontal-center gap-4 text-primary-purple-3 dark:text-primary-purple-5 ">
-          <div
-            className="flex-horizontal-center gap-2 cursor-pointer hover:underline"
-            onClick={handleNext}
-          >
+          <div className="flex-horizontal-center gap-2 cursor-pointer hover:underline">
             <MapPin className="size-5" /> <span>Use my current location</span>
           </div>
           <div className="border-neutral-200 border w-4 h-0"></div>
-          <div
-            className="flex-horizontal-center gap-2 cursor-pointer hover:underline"
-            onClick={handleNext}
-          >
+          <div className="flex-horizontal-center gap-2 cursor-pointer hover:underline">
             <MapPin className="size-5" />
             <span>Set my location on map</span>
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-const Page3 = () => {
-  const locations = [
-    {
-      name: "Gram Bistro",
-      address: "790 8th Ave, New York",
-      image: "gram-ill",
-    },
-    { name: "Bin 71", address: "792 8th Ave, New York", image: "bin-ill" },
-    { name: "Sushi Bar", address: "794 8th Ave, New York", image: "sushi-ill" },
-  ];
-
-  return (
-    <div className="flex-vertical-center  h-full py-10 gap-15 overflow-auto scroll-none">
-      <div className="gap-15 flex-vertical-center  text-center justify-start">
-        <div className="flex-vertical-center gap-4">
-          <h1 className="font-heading font-medium text-neutral-800 dark:text-white leading-12.5 -tracking-[0.5px] text-center text-[40px] max-w-[634px]">
-            Restaurants based on your selected location
-          </h1>
-          <p className=" text-neutral-600 dark:text-neutral-150 text-center text-body  max-w-[656px]">
-            Please enter your location or use your current location and enjoy
-            the custom experience in any of your restaurants.
-          </p>
-        </div>
-        <RadioGroup defaultValue={"0"}>
-          {locations.map((location, index) => (
-            <div
-              className="card-shadow flex justify-between items-center bg-white dark:bg-neutral-700 shadow-lg  rounded-2xl p-5 w-[480px] relative overflow-hidden"
-              key={location.name}
-            >
-              <Image
-                src={`/assets/images/${location.image}.svg`}
-                alt={location.name}
-                width={100}
-                height={120}
-                className="absolute top-0 left-0 h-full"
-              />
-              <Label
-                htmlFor={String(index)}
-                className="flex-vertical-center gap-3 w-full ml-25"
-              >
-                <h2 className="text-neutral-900 dark:text-white leading-5.5 font-semibold w-full text-start">
-                  {location.name}
-                </h2>
-                <p className="text-neutral-500 dark:text-neutral-200 text-sm leading-6 font-medium text-start w-full">
-                  {location.address}
-                </p>
-              </Label>
-              <RadioGroupItem
-                value={String(index)}
-                id={String(index)}
-                className="border-neutral-300
-            data-[state=checked]:accent-sec-yellow-1!
-            data-[state=checked]:border-sec-yellow-1!"
-              />
-            </div>
-          ))}
-        </RadioGroup>
-      </div>
-      <div className="w-full flex justify-center">
-        <Link
-          href="/menu"
-          className="cta bg-primary-purple-2 text-white rounded-2xl py-4 px-6 max-w-[480px] lg:max-w-[480px] w-full hover:scale-101 transition-transform duration-200 cursor-pointer text-center"
-        >
-          Continue
-        </Link>
-      </div>{" "}
     </div>
   );
 };

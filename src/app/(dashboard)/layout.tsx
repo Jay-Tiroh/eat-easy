@@ -18,7 +18,7 @@ export default function DashLayout({
   return (
     <AuthFlowProvider>
       <SidebarProvider>
-        <section className="w-screen h-screen dark:bg-bg bg-neutral-120 flex  overflow-hidden">
+        <section className="w-svw h-svh dark:bg-bg bg-neutral-120 flex  overflow-hidden">
           <AuthProvider>
             <Sidebar />
           </AuthProvider>

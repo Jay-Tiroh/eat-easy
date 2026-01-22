@@ -78,6 +78,7 @@ const Recommendations = () => {
         <div className="flex w-full items-center">
           {tabs.map((tab) => (
             <span
+              key={tab.name}
               className={`${
                 tab.name.toLowerCase() === selectedTab
                   ? "bg-yellow-1 text-white dark:text-neutral-800 font-bold"
