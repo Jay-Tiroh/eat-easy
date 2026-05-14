@@ -1,4 +1,5 @@
 import { auth, db } from "@/app/firebase/config";
+import { FirebaseError } from "firebase/app";
 import { fetchSignInMethodsForEmail } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 
@@ -14,11 +15,11 @@ function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
         () =>
           reject(
             new Error(
-              "Request timeout. Please check your connection and try again."
-            )
+              "Request timeout. Please check your connection and try again.",
+            ),
           ),
-        timeoutMs
-      )
+        timeoutMs,
+      ),
     ),
   ]);
 }
@@ -66,13 +67,13 @@ export async function checkEmailExists(email: string): Promise<boolean> {
         try {
           methods = await withTimeout(
             fetchSignInMethodsForEmail(auth, normalizedEmail),
-            TIMEOUT_MS
+            TIMEOUT_MS,
           );
-        } catch (err: any) {
+        } catch (err: unknown) {
           // If auth check times out or fails, continue to Firestore check
           console.warn(
             `Auth check attempt ${attempt + 1} failed:`,
-            err.message
+            err instanceof Error ? err.message : String(err),
           );
           methods = [];
         }
@@ -87,25 +88,25 @@ export async function checkEmailExists(email: string): Promise<boolean> {
         for (const candidate of candidates) {
           const q = query(
             collection(db, "users"),
-            where("email", "==", candidate)
+            where("email", "==", candidate),
           );
           try {
             const snapshot = await withTimeout(getDocs(q), TIMEOUT_MS);
             if (!snapshot.empty) {
               return true;
             }
-          } catch (err: any) {
+          } catch (err: unknown) {
             console.warn(
               `Firestore check attempt ${attempt + 1} failed:`,
-              err.message
+              err instanceof Error ? err.message : String(err),
             );
             // Continue to next candidate
           }
         }
 
         return false;
-      } catch (error: any) {
-        lastError = error;
+      } catch (error: unknown) {
+        lastError = error instanceof Error ? error : new Error(String(error));
         if (attempt < MAX_RETRIES) {
           // Wait before retrying with exponential backoff
           await delay(RETRY_DELAY * (attempt + 1));
@@ -114,9 +115,9 @@ export async function checkEmailExists(email: string): Promise<boolean> {
     }
 
     throw lastError || new Error("Failed to check email.");
-  } catch (error: any) {
-    const code = error?.code ? ` (${error.code})` : "";
-    const message = error?.message || "Failed to check email.";
+  } catch (error: unknown) {
+    const code = error instanceof FirebaseError ? ` (${error.code})` : "";
+    const message = error instanceof Error ? error.message : String(error);
     throw new Error(`${message}${code}`);
   }
 }

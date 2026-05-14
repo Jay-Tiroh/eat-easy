@@ -1,5 +1,4 @@
-import SelectLocation from "@/components/SelectLocation";
-import React from "react";
+import SelectLocation from "@/components/location/SelectLocation";
 
 const page = () => {
   return <SelectLocation />;

@@ -1,7 +1,7 @@
 "use client";
-// Import the functions you need from the SDKs you need
+
 import { getApp, getApps, initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, inMemoryPersistence, setPersistence } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -13,28 +13,21 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Validate that all required env vars are present to avoid invalid API key errors at build/runtime
-const missing = Object.entries({
-  NEXT_PUBLIC_FIREBASE_API_KEY: firebaseConfig.apiKey,
-  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: firebaseConfig.authDomain,
-  NEXT_PUBLIC_FIREBASE_PROJECT_ID: firebaseConfig.projectId,
-  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: firebaseConfig.storageBucket,
-  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: firebaseConfig.messagingSenderId,
-  NEXT_PUBLIC_FIREBASE_APP_ID: firebaseConfig.appId,
-}).filter(([, value]) => !value || value === "undefined");
+// Validate env vars
+const missing = Object.entries(firebaseConfig).filter(([, value]) => !value);
 
 if (missing.length) {
   const keys = missing.map(([key]) => key).join(", ");
   throw new Error(`Missing Firebase env vars: ${keys}`);
 }
 
-// Initialize Firebase
+// Initialize Firebase safely
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Ensure persistence is disabled for client-side usage
-auth.setPersistence = auth.setPersistence || (() => Promise.resolve());
+// Proper way to control persistence
+setPersistence(auth, inMemoryPersistence);
 
 export { app, auth, db };

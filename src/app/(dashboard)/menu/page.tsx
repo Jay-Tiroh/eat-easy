@@ -1,5 +1,4 @@
-import FoodMenu from "@/components/FoodMenu";
-import React from "react";
+import FoodMenu from "@/components/menu/FoodMenu";
 
 const page = () => {
   return <FoodMenu />;

@@ -1,5 +1,4 @@
-import SignInForm from "@/components/SignInForm";
-import React from "react";
+import SignInForm from "@/components/auth/forms/SignInForm";
 
 const page = () => {
   return (

@@ -1,5 +1,4 @@
-import Recommendations from "@/components/Recommendations";
-import React from "react";
+import Recommendations from "@/components/menu/Recommendations";
 
 const page = () => {
   return <Recommendations />;

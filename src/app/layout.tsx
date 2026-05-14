@@ -1,10 +1,11 @@
+import { ModeToggle } from "@/components/ModeToggle";
+import { AuthProvider } from "@/components/providers/AuthProvider";
+import { QueryProvider } from "@/components/providers/QueryProvider";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 import type { Metadata } from "next";
 import { DM_Sans, Mulish } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import { ModeToggle } from "@/components/ModeToggle";
-import { AuthProvider } from "@/contexts/AuthContext";
 
 const dmSans = DM_Sans({
   weight: ["400", "500", "600", "700"],
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${dmSans.variable} ${mulish.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -40,7 +41,9 @@ export default function RootLayout({
           <Toaster richColors position="top-right" />
           <>
             <ModeToggle />
-            <AuthProvider>{children}</AuthProvider>
+            <QueryProvider>
+              <AuthProvider>{children}</AuthProvider>
+            </QueryProvider>
           </>
         </ThemeProvider>
       </body>

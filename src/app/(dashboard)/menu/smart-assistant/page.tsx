@@ -1,5 +1,4 @@
-import VirtualAssistant from "@/components/VirtualAssistant";
-import React from "react";
+import VirtualAssistant from "@/components/menu/VirtualAssistant";
 
 const page = () => {
   return <VirtualAssistant />;

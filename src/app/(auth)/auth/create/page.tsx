@@ -1,6 +1,5 @@
 "use client";
-import CreateForm from "@/components/CreateForm";
-import React from "react";
+import CreateForm from "@/components/auth/forms/CreateForm";
 export const dynamic = "force-dynamic";
 const page = () => {
   return <CreateForm />;

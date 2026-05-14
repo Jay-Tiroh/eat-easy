@@ -1,6 +1,5 @@
-import AuthIllustration from "@/components/AuthIllustration";
+import AuthIllustration from "@/components/auth/components/AuthIllustration";
 import Link from "next/link";
-import React from "react";
 
 const page = () => {
   return (
